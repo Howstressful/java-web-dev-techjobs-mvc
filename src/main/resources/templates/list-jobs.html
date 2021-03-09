@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head">
+<!--<link th:href="@/css/techjobs.css}" rel="stylesheet">
+<script type= "text/javascript" th:src = "@{/js/bootstrap.js}"></script>
+-->
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
+    <link th:href="@{/css/techjobs.css}" rel="stylesheet" />
+    <script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>
+
+
 </head>
 <body>
 
@@ -8,10 +16,42 @@
 
 <div class="container body-content">
 
+
     <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
 
     <!-- TODO #1 - Use a loop to display job results in a table. -->
 
+
+
+
+    <table class = "table.job-listing">
+<thead>
+    <tr>
+
+        <th>ID</th>
+        <th>Name</th>
+        <th>Employer</th>
+        <th>Location</th>
+        <th>Position</th>
+        <th>Skills</th>
+    </tr>
+</thead>
+
+    <th:block th:each="table : ${jobs}">
+
+        <td th:utext="${table.id}"/>
+        <td th:utext="${table.Name}"/>
+        <td th:utext="${table.Employer}"/>
+        <td th:utext="${table.Location}"/>
+        <td th:utext="${table.PositionType}"/>
+        <td th:utext="${table.CoreCompetency}"/>
+
+    </tr>
+
+</th:block>
+
+
+</table>
 </div>
 
 </body>
